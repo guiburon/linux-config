@@ -24,14 +24,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
+from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.layout import MonadThreeCol
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+import os
+import subprocess
+
 mod = "mod4"
 terminal = guess_terminal()
+
+@hook.subscribe.startup_once
+def autostart():
+    autostart_script = os.path.expanduser("~/.config/qtile/autostart.sh")
+    subprocess.Popen([autostart_script])
 
 keys = [
     # A list of available commands that can be bound to keys can be found
