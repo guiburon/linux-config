@@ -47,22 +47,19 @@ alias ls="exa -la --group-directories-first --color=always"
 alias resource="source $ZDOTDIR/.zshrc"
 alias vim="nvim"
 
-# -----------------------------
-# ------------ ssh ------------
-# -----------------------------
-# start ssh-agent
+# ---------------------------------
+# ------------ startup ------------
+# ---------------------------------
+# --- keybindings ---
+bindkey -v	# vi mode
+
+# --- start ssh-agent ---
 eval `ssh-agent -s`
 # load private key for guiburon@github.com on guiburon-linux
 ssh-add ~/.ssh/github
 # clear print of ssh-agent
 clear
 
-# -----------------------------------
-# ------------ cosmetics ------------
-# -----------------------------------
+# --- cosmetic ---
 neofetch
-
-# ======================================================
-# ======================================================
-# ======================================================
 
