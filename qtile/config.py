@@ -34,7 +34,7 @@ import os
 import subprocess
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "kitty"
 
 @hook.subscribe.startup_once
 def autostart():
