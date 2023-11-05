@@ -1,29 +1,4 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
+# ======================== import ========================
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.layout import MonadThreeCol
@@ -33,14 +8,31 @@ from libqtile.utils import guess_terminal
 import os
 import subprocess
 
+
+# ======================== parameters ========================
+# ------ keys ------
 mod = "mod4"
+
+# ------ apps ------
 terminal = "kitty"
 
+# ------ layout options ------
+window_gap = 8
+
+# focus highlight
+focus_thickness = 3
+focus_color =       "ffffff"    # white
+focus_color_stack = "ffffff"    # white
+
+
+# ======================== startup hooks ========================
 @hook.subscribe.startup_once
 def autostart():
     autostart_script = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.Popen([autostart_script])
 
+
+# ======================== keybindings ========================
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -87,10 +79,14 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    # App spawn
-    Key([mod], "b", lazy.spawn("brave --password-store=basic"), desc="Spawn Brave browser"),
+    
+    # ------------------------ app spawn ------------------------
+    Key([mod], "b", lazy.spawn("brave --password-store=basic"), desc="Spawn Brave browser"), 
+    Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Spawn Emacs client"),
 ]
 
+
+# ======================== groups ========================
 groups = [Group(i) for i in "123456789"]
 
 for i in groups:
@@ -117,23 +113,38 @@ for i in groups:
         ]
     )
 
+
+# ======================== layouts ========================
 layouts = [
-    # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    layout.MonadTall(),
-    # layout.MonadWide(),
-    layout.MonadThreeCol(),
-    layout.RatioTile(),
-    # layout.Tile(),
-    layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Max(
+        margin = window_gap,
+    ),
+    layout.Stack(
+        num_stacks = 2,
+        border_focus = focus_color_stack,
+        border_width = focus_thickness,
+        margin = window_gap,
+    ),
+    layout.MonadTall(
+        border_focus = focus_color,
+        border_width = focus_thickness,
+        margin = window_gap,
+    ),
+    layout.MonadThreeCol(
+        border_focus = focus_color,
+        border_width = focus_thickness,
+        margin = window_gap,
+    ),
+    layout.RatioTile(
+        border_focus = focus_color,
+        border_width = focus_thickness,
+        margin = window_gap,
+    ),
+    # layout.TreeTab(),
 ]
 
+
+# ======================== widgets ========================
 widget_defaults = dict(
     font="MesloLGS NF Bold",
     fontsize=12,
@@ -141,6 +152,8 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
+# ======================== screens ========================
 screens = [
     Screen(
         bottom=bar.Bar(
@@ -204,6 +217,8 @@ screens = [
     )
 ]
 
+
+# ======================== mouse ========================
 # Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
@@ -211,6 +226,8 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
+
+# ======================== behavior ========================
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
@@ -249,3 +266,4 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
