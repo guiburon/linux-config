@@ -13,7 +13,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Which plugins would you like to load?
 # plugins=(git fast-syntax-highlighting zsh-autosuggestions)
-plugins=(git fast-syntax-highlighting)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,16 +33,16 @@ alias emacsserver="emacs --daemon&"
 alias kill-emacs="emacsclient -e '(kill-emacs)'"
 alias ec="emacsclient -c -a emacs&"
 
-# --- kitty ---
-alias icat="kitty +kitten icat"	# image viewer
+# # --- kitty ---
+# alias icat="kitty +kitten icat"	# image viewer
 
-# --- Qtile ---
-alias qtile-reload="qtile cmd-obj -o cmd -f reload_config"	# mod+ctrl+r with default Qtile keybindings
-alias qtile-restart="qtile cmd-obj -o cmd -f restart"
-alias qtile-log="cat ~/.local/share/qtile/qtile.log"
+# # --- Qtile ---
+# alias qtile-reload="qtile cmd-obj -o cmd -f reload_config"	# mod+ctrl+r with default Qtile keybindings
+# alias qtile-restart="qtile cmd-obj -o cmd -f restart"
+# alias qtile-log="cat ~/.local/share/qtile/qtile.log"
 
 # --- Misc ---
-alias brave="brave --password-store=basic"	# disable wallet popup
+# alias brave="brave --password-store=basic"	# disable wallet popup
 alias cat="bat"
 alias ls="exa -la --group-directories-first --color=always"
 alias resource="source $ZDOTDIR/.zshrc"
@@ -54,12 +54,12 @@ alias vim="nvim"
 # --- keybindings ---
 bindkey -v	# vi mode
 
-# --- start ssh-agent ---
-eval `ssh-agent -s`
-# load private key for guiburon@github.com on guiburon-linux
-ssh-add ~/.ssh/github
-# clear print of ssh-agent
-clear
+# # --- start ssh-agent ---
+# eval `ssh-agent -s`
+# # load private key for guiburon@github.com on guiburon-linux
+# ssh-add ~/.ssh/github
+# # clear print of ssh-agent
+# clear
 
 # --- cosmetic ---
 # neofetch
