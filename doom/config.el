@@ -80,6 +80,4 @@
 (after! lsp-julia
   (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
 
-(after! lsp-julia
-  (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
-
+(setq eglot-jl-language-server-project "~/.julia/environments/v1.9")
