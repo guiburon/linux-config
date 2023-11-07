@@ -43,7 +43,7 @@ alias ec="emacsclient -c -a emacs&"
 
 # --- Misc ---
 # alias brave="brave --password-store=basic"	# disable wallet popup
-alias cat="bat"
+alias cat="batcat"
 alias ls="exa -la --group-directories-first --color=always"
 alias resource="source $ZDOTDIR/.zshrc"
 alias vim="nvim"
