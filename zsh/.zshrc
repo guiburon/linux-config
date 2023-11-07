@@ -54,12 +54,12 @@ alias vim="nvim"
 # --- keybindings ---
 bindkey -v	# vi mode
 
-# # --- start ssh-agent ---
-# eval `ssh-agent -s`
-# # load private key for guiburon@github.com on guiburon-linux
-# ssh-add ~/.ssh/github
-# # clear print of ssh-agent
-# clear
+# --- start ssh-agent ---
+eval `ssh-agent -s`
+# load private key for guiburon@github.com on workstation-wsl
+ssh-add ~/.ssh/github
+# clear print of ssh-agent
+clear
 
 # --- cosmetic ---
 # neofetch
