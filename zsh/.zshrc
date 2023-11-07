@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 # --- Emacs ---
 alias emacsserver="emacs --daemon&"
 alias kill-emacs="emacsclient -e '(kill-emacs)'"
-alias ec="emacsclient -c -a emacs"
+alias ec="emacsclient -c -a emacs&"
 
 # --- kitty ---
 alias icat="kitty +kitten icat"	# image viewer
