@@ -194,5 +194,5 @@
        ;;literate
        (default +bindings +smartparens))
 
-(setenv "JULIA_NUM_THREADS" "32")
+(setenv "JULIA_NUM_THREADS" "12")
 
