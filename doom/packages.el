@@ -56,6 +56,9 @@
 ;; -------------------------------
 ;; ------------ julia ------------ 
 ;; -------------------------------
+(package! lsp-julia)
+(package! eglot-jl)
+
 (package! julia-mode)
 (package! julia-repl)
 

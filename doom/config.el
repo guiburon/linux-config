@@ -74,3 +74,12 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+(setq lsp-julia-package-dir nil)
+(after! lsp-julia
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
+
+(after! lsp-julia
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
+
