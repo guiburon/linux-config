@@ -81,3 +81,11 @@
   (setq lsp-julia-default-environment "~/.julia/environments/v1.9"))
 
 (setq eglot-jl-language-server-project "~/.julia/environments/v1.9")
+
+(set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+
+(setq-default indent-tabs-mode nil)  ; tab uses spaces instead of \t
+(setq tab-width 2)
+(setq julia-indent-offset 2)
+(setq c-basic-offset 2)
+(setq cperl-indent-level 2)
