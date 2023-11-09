@@ -1,7 +1,0 @@
-# ignore all
-*
-
-# except these files
-!.gitignore
-!kitty.conf
-
