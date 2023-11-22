@@ -35,6 +35,14 @@ alias ec="emacsclient -c -a emacs&"
 # --- kitty ---
 alias icat="kitty +kitten icat"	# image viewer
 
+# --- Private Internet Access ---
+alias piaenable="piactl background enable"
+alias piadisable="piactl background disable"
+alias piaco="piactl connect"
+alias piadeco="piactl disconnect"
+alias piastatus="piactl get connectionstate"
+alias piaregion="piactl get region"
+
 # --- Qtile ---
 alias qtile-reload="qtile cmd-obj -o cmd -f reload_config"	# mod+ctrl+r with default Qtile keybindings
 alias qtile-restart="qtile cmd-obj -o cmd -f restart"
