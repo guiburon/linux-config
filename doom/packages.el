@@ -62,3 +62,8 @@
 (package! julia-mode)
 (package! julia-repl)
 
+;; -------------------------------
+;; ------------ LaTeX ------------
+;; -------------------------------
+(package! auctex-latexmk)
+

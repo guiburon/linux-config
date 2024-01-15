@@ -75,6 +75,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; -------------------------------
+;; ------------ julia ------------
+;; -------------------------------
 
 (setq lsp-julia-package-dir nil)
 (after! lsp-julia
@@ -82,7 +85,21 @@
 
 (setq eglot-jl-language-server-project "~/.julia/environments/v1.9")
 
+;; -------------------------------
+;; ------------ C/C++ ------------
+;; -------------------------------
+
 (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+
+;; -------------------------------
+;; ------------ LaTeX ------------
+;; -------------------------------
+
+(setq +latex-viewers '(pdf-tools))
+
+;; ------------------------------
+;; ------------ misc ------------
+;; ------------------------------
 
 (setq-default indent-tabs-mode nil)  ; tab uses spaces instead of \t
 (setq tab-width 2)
