@@ -57,6 +57,7 @@ bindkey -v	# vi mode
 eval `ssh-agent -s`
 # load private key for guiburon@github.com on workstation-wsl
 ssh-add ~/.ssh/github
+ssh-add ~/.ssh/lyolinlst
 # clear print of ssh-agent
 clear
 
