@@ -46,7 +46,6 @@ alias ec="emacsclient -c -a emacs&"
 alias cat="batcat"
 alias ls="exa -la --group-directories-first --color=always"
 alias resource="source $ZDOTDIR/.zshrc"
-alias vim="nvim"
 
 # ---------------------------------
 # ------------ startup ------------
