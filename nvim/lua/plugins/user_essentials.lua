@@ -6,4 +6,13 @@ return {
       require("wrapping").setup()
     end,
   },
+
+  --- toggle comment ---
+  {
+    "numToStr/Comment.nvim",
+    opts = {
+      -- add any options here
+    },
+    lazy = false,
+  },
 }
