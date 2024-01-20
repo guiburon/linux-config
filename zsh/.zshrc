@@ -53,7 +53,6 @@ alias brave="brave --password-store=basic"	# disable wallet popup
 alias cat="bat"
 alias ls="exa -la --group-directories-first --color=always"
 alias resource="source $ZDOTDIR/.zshrc"
-alias vim="nvim"
 
 # ---------------------------------
 # ------------ startup ------------
