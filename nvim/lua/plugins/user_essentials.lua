@@ -1,4 +1,4 @@
-return {
+local plugins = {
   --- line wrapping (toggle with keys: yow) ---
   {
     "andrewferrier/wrapping.nvim",
@@ -16,3 +16,5 @@ return {
     lazy = false,
   },
 }
+
+return plugins
