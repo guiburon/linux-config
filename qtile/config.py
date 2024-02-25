@@ -1,9 +1,7 @@
 # ======================== import ========================
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
-from libqtile.layout import MonadThreeCol
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 import os
 import subprocess
@@ -23,6 +21,10 @@ window_gap = 8
 focus_thickness = 3
 focus_color = "ffffff"  # white
 focus_color_stack = "ffffff"  # white
+
+# ------ style ------
+low_priority_color = "555555"  # grey
+high_priority_color = "ffffff"  # white
 
 
 # ======================== startup hooks ========================
@@ -101,6 +103,19 @@ keys = [
         desc="Spawn Brave browser",
     ),
     Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Spawn Emacs client"),
+    # ------------------------ function keys ------------------------
+    # ------ screen brightness ------
+    # Key(
+    #     [],
+    #     "XF86MonBrightnessUp",
+    #     lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.UP),
+    # ),
+    # Key(
+    #     [],
+    #     "XF86MonBrightnessDown",
+    #     lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.DOWN),
+    # ),
+    # ------ volume ------
 ]
 
 
@@ -189,8 +204,33 @@ screens = [
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                # widget.Backlight(),  # Error: Unable to read status for brightness
+                widget.TextBox("🔈"),
+                widget.Volume(),
+                # widget.PulseVolume(),  # Import Error: PulseVolume
+                widget.TextBox("🔋"),
+                widget.Battery(
+                    # !!! TO DO !!! configure charging strategy in Qtile or already done by hardware or should be done with external tools?
+                    charge_char="+",
+                    discharge_char="-",
+                    empty_char="x",
+                    format="{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W",
+                    update_interval=2,  # sec
+                    foreground=high_priority_color,
+                ),
+                widget.TextBox("📅"),
+                widget.Clock(
+                    format="%a %Y-%m-%d",
+                    foreground=high_priority_color,
+                ),
+                widget.TextBox("⏲"),
+                widget.Clock(
+                    format="%H:%M",
+                    foreground=high_priority_color,
+                ),
+                # widget.QuickExit(
+                #     foreground=low_priority_color,
+                # ),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
