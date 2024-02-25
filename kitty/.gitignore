@@ -4,4 +4,5 @@
 # except these files
 !.gitignore
 !kitty.conf
+!current-theme.conf
 
