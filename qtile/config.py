@@ -21,8 +21,8 @@ window_gap = 8
 
 # focus highlight
 focus_thickness = 3
-focus_color =       "ffffff"    # white
-focus_color_stack = "ffffff"    # white
+focus_color = "ffffff"  # white
+focus_color_stack = "ffffff"  # white
 
 
 # ======================== startup hooks ========================
@@ -44,14 +44,23 @@ keys = [
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
@@ -75,13 +84,22 @@ keys = [
         lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen on the focused window",
     ),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    Key(
+        [mod],
+        "t",
+        lazy.window.toggle_floating(),
+        desc="Toggle floating on the focused window",
+    ),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    
     # ------------------------ app spawn ------------------------
-    Key([mod], "b", lazy.spawn("brave --password-store=basic"), desc="Spawn Brave browser"), 
+    Key(
+        [mod],
+        "b",
+        lazy.spawn("brave --password-store=basic"),
+        desc="Spawn Brave browser",
+    ),
     Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Spawn Emacs client"),
 ]
 
@@ -117,28 +135,28 @@ for i in groups:
 # ======================== layouts ========================
 layouts = [
     layout.Max(
-        margin = window_gap,
+        margin=window_gap,
     ),
     layout.Stack(
-        num_stacks = 2,
-        border_focus = focus_color_stack,
-        border_width = focus_thickness,
-        margin = window_gap,
+        num_stacks=2,
+        border_focus=focus_color_stack,
+        border_width=focus_thickness,
+        margin=window_gap,
     ),
     layout.MonadTall(
-        border_focus = focus_color,
-        border_width = focus_thickness,
-        margin = window_gap,
+        border_focus=focus_color,
+        border_width=focus_thickness,
+        margin=window_gap,
     ),
     layout.MonadThreeCol(
-        border_focus = focus_color,
-        border_width = focus_thickness,
-        margin = window_gap,
+        border_focus=focus_color,
+        border_width=focus_thickness,
+        margin=window_gap,
     ),
     layout.RatioTile(
-        border_focus = focus_color,
-        border_width = focus_thickness,
-        margin = window_gap,
+        border_focus=focus_color,
+        border_width=focus_thickness,
+        margin=window_gap,
     ),
     # layout.TreeTab(),
 ]
@@ -147,7 +165,7 @@ layouts = [
 # ======================== widgets ========================
 widget_defaults = dict(
     font="MesloLGS NF Bold",
-    fontsize=12,
+    fontsize=17,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -184,36 +202,6 @@ screens = [
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
         # x11_drag_polling_rate = 60,
-    ),
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
-            ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-        ),
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
     )
 ]
 
@@ -221,8 +209,15 @@ screens = [
 # ======================== mouse ========================
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -266,4 +261,3 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
