@@ -128,6 +128,24 @@ keys = [
     #     lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.DOWN),
     # ),
     # ------ volume ------
+    Key(
+        [],
+        volumeRaise,
+        lazy.spawn("amixer -q set Master 10%+ unmute"),
+        desc="Raise volume",
+    ),
+    Key(
+        [],
+        volumeLower,
+        lazy.spawn("amixer -q set Master 10%- unmute"),
+        desc="Lower volume",
+    ),
+    Key(
+        [],
+        volumeMute,
+        lazy.spawn("amixer -q set Master toggle"),
+        desc="Lower volume",
+    ),
 ]
 
 
