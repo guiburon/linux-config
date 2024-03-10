@@ -2,6 +2,8 @@ import os
 
 # qtile arg necessary for Qtile lazy function calls
 # if class attributes necessary, learn to do custom Qtile widgets?
+#   see https://docs.qtile.org/en/stable/manual/howto/widget.html
+#   base namespace is libqtile.widget.base
 
 
 class ScreenBrightness:
