@@ -9,7 +9,19 @@ import subprocess
 
 # ======================== parameters ========================
 # ------ keys ------
-mod = "mod4"
+mod = "mod4"  # Windows key
+volumeRaise = "XF86AudioRaiseVolume"
+volumeLower = "XF86AudioLowerVolume"
+volumeMute = "XF86AudioMute"
+mediaPrev = "XF86AudioPrev"
+mediaPlay = "XF86AudioPlay"
+mediaNext = "XF86AudioNext"
+screenBrightnessDown = "XF86MonBrightnessDown"
+screenBrightnessUp = "XF86MonBrightnessUp"
+# Super_L   # Projector? on F9
+planeMode = "XF86RFKill"
+printScreen = "Print"
+# XF86AudioMedia    # Framework Gear on F12
 
 # ------ apps ------
 terminal = "kitty"
