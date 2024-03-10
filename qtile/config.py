@@ -6,6 +6,7 @@ from libqtile.lazy import lazy
 import os
 import subprocess
 
+import libqtilecustom
 
 # ======================== parameters ========================
 # ------ keys ------
@@ -37,6 +38,11 @@ focus_color_stack = "ffffff"  # white
 # ------ style ------
 low_priority_color = "555555"  # grey
 high_priority_color = "ffffff"  # white
+
+
+# ======================== custom objects ========================
+screenBrightness = libqtilecustom.ScreenBrightness()
+volume = libqtilecustom.Volume()
 
 
 # ======================== startup hooks ========================
@@ -117,33 +123,35 @@ keys = [
     Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Spawn Emacs client"),
     # ------------------------ function keys ------------------------
     # ------ screen brightness ------
-    # Key(
-    #     [],
-    #     "XF86MonBrightnessUp",
-    #     lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.UP),
-    # ),
-    # Key(
-    #     [],
-    #     "XF86MonBrightnessDown",
-    #     lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.DOWN),
-    # ),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.function(screenBrightness.change, 0.1),  # +10%
+        desc="Raise screen brightness",
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.function(screenBrightness.change, -0.1),  # -10%
+        desc="Lower screen brightness",
+    ),
     # ------ volume ------
     Key(
         [],
         volumeRaise,
-        lazy.spawn("amixer -q set Master 10%+ unmute"),
+        lazy.function(volume.up, 0.1),  # +10%
         desc="Raise volume",
     ),
     Key(
         [],
         volumeLower,
-        lazy.spawn("amixer -q set Master 10%- unmute"),
+        lazy.function(volume.down, 0.1),  # -10%
         desc="Lower volume",
     ),
     Key(
         [],
         volumeMute,
-        lazy.spawn("amixer -q set Master toggle"),
+        lazy.function(volume.toggleMute),
         desc="Lower volume",
     ),
 ]
