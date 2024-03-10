@@ -39,6 +39,10 @@ focus_color_stack = "ffffff"  # white
 low_priority_color = "555555"  # grey
 high_priority_color = "ffffff"  # white
 
+# ------ increments ------
+volumeIncrement = 0.05  # (%)
+brightnessIncrement = 0.1  # (%)
+
 
 # ======================== custom objects ========================
 screenBrightness = libqtilecustom.ScreenBrightness()
@@ -126,26 +130,26 @@ keys = [
     Key(
         [],
         "XF86MonBrightnessUp",
-        lazy.function(screenBrightness.change, 0.1),  # +10%
+        lazy.function(screenBrightness.change, brightnessIncrement),
         desc="Raise screen brightness",
     ),
     Key(
         [],
         "XF86MonBrightnessDown",
-        lazy.function(screenBrightness.change, -0.1),  # -10%
+        lazy.function(screenBrightness.change, -brightnessIncrement),
         desc="Lower screen brightness",
     ),
     # ------ volume ------
     Key(
         [],
         volumeRaise,
-        lazy.function(volume.up, 0.1),  # +10%
+        lazy.function(volume.up, volumeIncrement),
         desc="Raise volume",
     ),
     Key(
         [],
         volumeLower,
-        lazy.function(volume.down, 0.1),  # -10%
+        lazy.function(volume.down, volumeIncrement),
         desc="Lower volume",
     ),
     Key(
