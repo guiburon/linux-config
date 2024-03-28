@@ -15,6 +15,11 @@ local plugins = {
     },
     lazy = false,
   },
+
+  --- REPL ---
+  -- {
+  --   "Olical/conjure",
+  -- },
 }
 
 return plugins
