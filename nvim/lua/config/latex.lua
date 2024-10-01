@@ -26,5 +26,5 @@ let g:vimtex_compiler_method = 'pdflatex'
 
 " Most VimTeX mappings rely on localleader and this can be changed with the
 " following line. The default is usually fine and is the symbol "\".
-let maplocalleader = ","
+let maplocalleader = "\\"
 ]])
