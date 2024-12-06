@@ -7,4 +7,4 @@
 feh --bg-fill ~/Pictures/wallpapers/wallpaper
 
 # natural scrolling direction for touchpad
-xinput set-prop 12 296 1
+xinput set-prop 12 298 1
