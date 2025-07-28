@@ -125,7 +125,6 @@ keys = [
         lazy.spawn("brave --password-store=basic"),
         desc="Spawn Brave browser",
     ),
-    Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Spawn Emacs client"),
     # ------------------------ function keys ------------------------
     # ------ screen brightness ------
     # hardware screen brightness
