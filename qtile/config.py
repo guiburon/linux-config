@@ -40,8 +40,8 @@ low_priority_color = "555555"  # grey
 high_priority_color = "ffffff"  # white
 
 # ------ increments ------
-volumeIncrement = 0.05  # (%)
-brightnessIncrement = 0.1  # (%)
+volumeIncrement = 0.05  # (0.0-1.0)
+brightnessIncrement = 0.1  # (0.0-1.0)
 
 
 # ======================== custom objects ========================
