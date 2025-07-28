@@ -248,7 +248,9 @@ screens = [
                 widget.Systray(),
                 # widget.Backlight(),  # Error: Unable to read status for brightness
                 widget.TextBox("🔈"),
-                widget.Volume(),
+                widget.Volume(
+                    update_interval=0.5,  # sec
+                ),
                 # widget.PulseVolume(),  # Import Error: PulseVolume
                 widget.TextBox("🔋"),
                 widget.Battery(
