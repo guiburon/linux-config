@@ -46,6 +46,7 @@ brightnessIncrement = 0.1  # (0.0-1.0)
 
 # ======================== custom objects ========================
 screenBrightness = libqtilecustom.ScreenBrightness()
+screenBrightnessSoftware = libqtilecustom.ScreenBrightnessSoftware()
 volume = libqtilecustom.Volume()
 
 
@@ -127,6 +128,7 @@ keys = [
     Key([mod], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Spawn Emacs client"),
     # ------------------------ function keys ------------------------
     # ------ screen brightness ------
+    # hardware screen brightness
     Key(
         [],
         "XF86MonBrightnessUp",
@@ -138,6 +140,19 @@ keys = [
         "XF86MonBrightnessDown",
         lazy.function(screenBrightness.change, -brightnessIncrement),
         desc="Lower screen brightness",
+    ),
+    # software screen brightness fine adjustment multiplier
+    Key(
+        [mod],
+        "XF86MonBrightnessUp",
+        lazy.function(screenBrightnessSoftware.change, brightnessIncrement),
+        desc="Raise software screen brightness",
+    ),
+    Key(
+        [mod],
+        "XF86MonBrightnessDown",
+        lazy.function(screenBrightnessSoftware.change, -brightnessIncrement),
+        desc="Lower software screen brightness",
     ),
     # ------ volume ------
     Key(

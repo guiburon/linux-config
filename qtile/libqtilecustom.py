@@ -7,11 +7,37 @@ import os
 
 
 class ScreenBrightness:
+    """
+    Hardware screen brightness adjusted using xbacklight CLI from AUR pkg acpilight. Beware that xbacklight may need sudo out of the box. See https://www.reddit.com/r/Gentoo/comments/mgp99i/permission_denied_sysclassbacklightintel/ to solve without introducing security risk.
+    """
+
+    def value(self, qtile) -> float:
+        brightness = os.popen("xbacklight -get").read()
+        brightness = int(brightness)  # 0-100
+        return brightness / 100.0  # return 0.0-1.0 instead of 0-100
+
+    def set(self, qtile, value: float):
+        os.system(f"xbacklight -set {str(100 * value)}")
+
+    def change(self, qtile, value: float):
+        tgt = self.value(qtile) + value
+        if tgt > 1.0:
+            tgt = 1.0
+        if tgt < 0.0:
+            tgt = 0.0
+        self.set(qtile, tgt)
+
+
+class ScreenBrightnessSoftware:
+    """
+    Brightness of the screen output using xrandr. Fine multiplier over the hardware screen brightness.
+    """
+
     def value(self, qtile):
         brightness = os.popen(
             "xrandr --verbose | awk '/Brightness/ { print $2; exit }'"
         ).read()
-        brightness = float(brightness)
+        brightness = float(brightness)  # 0.0-1.0
         return brightness
 
     def set(self, qtile, value):
