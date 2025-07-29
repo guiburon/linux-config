@@ -42,6 +42,7 @@ high_priority_color = "ffffff"  # white
 # ------ increments ------
 volumeIncrement = 0.05  # (0.0-1.0)
 brightnessIncrement = 0.1  # (0.0-1.0)
+brightnessIncrementFine = 0.01  # (0.0-1.0)
 
 
 # ======================== custom objects ========================
@@ -140,15 +141,27 @@ keys = [
         lazy.function(screenBrightness.change, -brightnessIncrement),
         desc="Lower screen brightness",
     ),
-    # software screen brightness fine adjustment multiplier
     Key(
         [mod],
+        "XF86MonBrightnessUp",
+        lazy.function(screenBrightness.change, brightnessIncrementFine),
+        desc="Raise screen brightness",
+    ),
+    Key(
+        [mod],
+        "XF86MonBrightnessDown",
+        lazy.function(screenBrightness.change, -brightnessIncrementFine),
+        desc="Lower screen brightness",
+    ),
+    # software screen brightness fine adjustment multiplier
+    Key(
+        [mod, "control"],
         "XF86MonBrightnessUp",
         lazy.function(screenBrightnessSoftware.change, brightnessIncrement),
         desc="Raise software screen brightness",
     ),
     Key(
-        [mod],
+        [mod, "control"],
         "XF86MonBrightnessDown",
         lazy.function(screenBrightnessSoftware.change, -brightnessIncrement),
         desc="Lower software screen brightness",
