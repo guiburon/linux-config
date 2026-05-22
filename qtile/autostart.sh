@@ -10,4 +10,4 @@ feh --bg-fill /usr/share/backgrounds/guiburon/nh-apluto-wide-9-17-15-final_0.png
 setxkbmap -layout us -variant altgr-intl
 
 # natural scrolling direction for touchpad
-xinput set-prop 12 310 1
+xinput set-prop 11 310 1
